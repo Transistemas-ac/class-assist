@@ -1,10 +1,13 @@
-# Asistencia Transis
+# class-assist 🧮
 
 Script que genera una tabla basado en una lista de alumnxs y logs de zoom o resultados de formulario de asistencia
+
+<br>
 
 ## Cómo funciona
 
 El funcionamiento actual es el siguiente:
+
 1. Se toman los archivos de logs y resultados de formulario ubicados en una carpeta input
 2. Se limpian los datos de ambos tipos de archivos removiendo datos innecesarios y juntando otros
 3. Se combinan los tipos de archivo (log y form) en un solo DataFrame para cada tipo
@@ -14,9 +17,12 @@ El funcionamiento actual es el siguiente:
 7. Se checkea para cada fecha si el identificador de cada alumnx está presente en el DataFrame de logs o forms y se determina su status: both (ambos), log, form, absent (ausente)
 8. La tabla creada a partir del paso 4 se convierte en un nuevo DataFrame, se organiza y exporta
 
+<br>
+
 ## Siguientes pasos a implementar
 
 Lo que está presente en esta primera carga es solo una especie de demo, hay un número de items que querría implementar luego de conversarlos y llegar a acuerdos en cuanto a nombres y algunos pasos manuales
+
 - Agregar un input adicional relacionado a un form de ausencia, con el fin de que quienes se ausenten puedan completar un form estático que esté siempre abierto o mismo una tabla donde profes puedan cargar ausencias justificadas y se pueda procesar en el script
 - Conectar a drive
   - El primer objetivo es poder descargar automáticamente los archivos que se vayan subiendo
