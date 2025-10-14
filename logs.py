@@ -8,26 +8,26 @@ class LogFile:
 
     def __init__(self, file_location):
         self.df = read_csv_with_header_check(file_location)
-        self.cleanup_columns()
-        self.cleanup_time()
-        self.group_data()
+        self._cleanup_columns()
+        self._cleanup_time()
+        self._group_data()
         self.file_path = file_location
         self.date = self._extract_date_from_filename()
         #self.df = self._load_and_process()
         #self.df['source_date'] = self.date
 
-    def cleanup_columns(self):
+    def _cleanup_columns(self):
         self.df.rename(columns={
             'Name (original name)': 'name',
             'Join time': 'date',
             'Duration (minutes)': 'duration'
         }, inplace=True)
 
-    def cleanup_time(self):
+    def _cleanup_time(self):
         self.df['date'] = pd.to_datetime(self.df['date'])
         self.df['date'] = self.df['date'].dt.strftime('%d/%m/%Y %I:%M:%S %p')
 
-    def group_data(self):
+    def _group_data(self):
         result = self.df.groupby('name').agg({
             'date': 'first',
             'duration': 'sum'
